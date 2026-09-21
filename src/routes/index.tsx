@@ -125,11 +125,12 @@ function WeddingInvitation() {
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Lễ thành hôn Thảo My & Xuân Tú")}&dates=20261003T030000Z/20261003T050000Z&details=${details}`;
   }, []);
 
-  async function enterInvitation() {
+  function enterInvitation() {
     if (opening) return;
     setOpening(true);
-    try { await audioRef.current?.play(); setPlaying(true); } catch { setPlaying(false); }
     window.setTimeout(() => setOpened(true), 17200);
+    const playback = audioRef.current?.play();
+    if (playback) void playback.then(() => setPlaying(true)).catch(() => setPlaying(false));
   }
   async function toggleMusic() {
     if (!audioRef.current) return;
