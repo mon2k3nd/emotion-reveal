@@ -9,3 +9,4 @@
 - [x] Bỏ toàn bộ ảnh bay qua màn hình.
 - [x] Dùng chung khung ảnh cuối intro và đầu trang để chuyển cảnh liền mạch.
 - [x] Làm lại nhịp xuất hiện chữ mở đầu theo từng câu, mềm và giàu cảm xúc hơn.
+- [x] Đồng nhất tuyệt đối khung cuối intro với khung đầu thiệp để chuyển cảnh liền mạch.

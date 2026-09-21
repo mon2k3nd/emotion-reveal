@@ -41,6 +41,21 @@ function IconButton({ label, onClick, children, className = "" }: { label: strin
   return <Button type="button" variant="glass" size="iconLg" aria-label={label} title={label} onClick={onClick} className={className}>{children}</Button>;
 }
 
+function WeddingHero({ intro = false }: { intro?: boolean }) {
+  return <section id={intro ? undefined : "home"} className="wedding-hero-frame relative min-h-[100svh] overflow-hidden bg-foreground">
+    <img src={img1} alt={intro ? "" : "Thảo My và Xuân Tú trong ngày cưới"} aria-hidden={intro || undefined} className="hero-photo absolute inset-0 h-full w-full object-cover object-[50%_30%]" />
+    <div className="hero-vignette absolute inset-0" />
+    <div className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-5 pb-12 text-center text-primary-foreground">
+      <p className="mb-4 text-[10px] uppercase tracking-[.3em] text-primary-foreground/85">03 · 10 · 2026</p>
+      {intro
+        ? <p className="font-display text-[3.6rem] leading-[.9] sm:text-8xl">Thảo My<br/><span className="text-secondary">&</span> Xuân Tú</p>
+        : <h1 className="text-[3.6rem] leading-[.9] sm:text-8xl">Thảo My<br/><span className="text-secondary">&</span> Xuân Tú</h1>}
+      <p className="mt-6 font-display text-lg italic leading-[2]">Hai con người,<br/>hai hành trình,<br/>một đích đến.</p>
+      <span aria-hidden className="scroll-hint mt-8 block h-12 w-px text-primary-foreground/70"><i /></span>
+    </div>
+  </section>;
+}
+
 function WeddingInvitation() {
   const [opened, setOpened] = useState(false);
   const [opening, setOpening] = useState(false);
@@ -159,16 +174,7 @@ function WeddingInvitation() {
             <span aria-hidden className="opening-verse-flourish" />
           </div>
         </div>
-        <div className="intro-finale absolute inset-0 z-40 overflow-hidden bg-foreground">
-          <img src={img1} alt="Thảo My và Xuân Tú" className="hero-photo absolute inset-0 h-full w-full object-cover object-[50%_30%]" />
-          <div className="intro-finale-shade absolute inset-0" />
-          <div className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-5 pb-12 text-center text-primary-foreground">
-            <p className="mb-4 text-[10px] uppercase tracking-[.3em] text-primary-foreground/85">03 · 10 · 2026</p>
-            <p className="font-display text-[3.6rem] leading-[.9] sm:text-8xl">Thảo My<br/><span className="text-secondary">&</span> Xuân Tú</p>
-            <p className="mt-6 font-display text-lg italic leading-[2]">Hai con người,<br/>hai hành trình,<br/>một đích đến.</p>
-            <span aria-hidden className="scroll-hint mt-8 block h-12 w-px text-primary-foreground/70"><i /></span>
-          </div>
-        </div>
+        <div className="intro-finale absolute inset-0 z-40 overflow-hidden bg-foreground"><WeddingHero intro /></div>
       </>}
     </div>}
     <div className="fixed inset-x-0 top-0 z-40 h-1 bg-border no-print"><div className="h-full bg-primary transition-[width]" style={{ width: `${progress}%` }} /></div>
@@ -179,16 +185,7 @@ function WeddingInvitation() {
       {progress > 18 && <IconButton label="Lên đầu trang" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><ChevronUp size={19} /></IconButton>}
     </div>
 
-    <section id="home" className="relative min-h-[100svh] overflow-hidden bg-foreground">
-      <img src={img1} alt="Thảo My và Xuân Tú trong ngày cưới" className="hero-photo absolute inset-0 h-full w-full object-cover object-[50%_30%]" />
-      <div className="hero-vignette absolute inset-0" />
-      <div className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col items-center justify-end px-5 pb-12 text-center text-primary-foreground">
-        <p className="mb-4 text-[10px] uppercase tracking-[.3em] text-primary-foreground/85">03 · 10 · 2026</p>
-        <h1 className="text-[3.6rem] leading-[.9] sm:text-8xl">Thảo My<br/><span className="text-secondary">&</span> Xuân Tú</h1>
-        <p className="mt-6 font-display text-lg italic leading-[2]">Hai con người,<br/>hai hành trình,<br/>một đích đến.</p>
-        <span aria-hidden className="scroll-hint mt-8 block h-12 w-px text-primary-foreground/70"><i /></span>
-      </div>
-    </section>
+    <WeddingHero />
 
     <section id="invitation" className="mx-auto grid max-w-5xl items-center gap-8 px-6 py-16 md:grid-cols-[.85fr_1.15fr] md:py-24">
       <div className="reveal"><p className="text-[10px] uppercase tracking-[.3em] text-primary">Chương I · Lời mời</p><h2 className="mt-3 text-[2.6rem] leading-[1.1] md:text-5xl">Ngày chúng mình<br/>gọi nhau là gia đình</h2><p className="mt-5 max-w-sm leading-7 text-muted-foreground">Sẽ thật trọn vẹn nếu ngày ấy có nụ cười của bạn.</p></div>
