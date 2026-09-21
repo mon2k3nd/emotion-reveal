@@ -229,6 +229,11 @@
 @keyframes flourishOpen { 0% { opacity:0; transform:scaleX(0); } 100% { opacity:.75; transform:scaleX(1); } }
 @keyframes introCurtainAway { 0%,73% { opacity:1; } 88%,100% { opacity:0; } }
 @keyframes skipAway { 0%,70% { opacity:1; } 78%,100% { opacity:0; visibility:hidden; } }
+@keyframes heroCopyEnter {
+  0% { opacity: 0; transform: translateY(22vh); filter: blur(7px); }
+  55% { opacity: .75; }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
 
 
 @utility font-display { font-family: var(--font-display); }
@@ -289,6 +294,10 @@
 @utility hero-photo {
   animation: heroReveal 2.4s cubic-bezier(.2,.75,.2,1) both;
   filter: saturate(.9) contrast(1.02);
+}
+
+@utility hero-copy {
+  &.is-entering { animation: heroCopyEnter 1.65s cubic-bezier(.16,.78,.2,1) both; }
 }
 
 @utility hero-vignette {
