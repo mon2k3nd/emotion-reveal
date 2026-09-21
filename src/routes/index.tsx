@@ -59,6 +59,7 @@ function WeddingHero({ intro = false }: { intro?: boolean }) {
 function WeddingInvitation() {
   const [opened, setOpened] = useState(false);
   const [opening, setOpening] = useState(false);
+  const [controlsReady, setControlsReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
@@ -111,6 +112,12 @@ function WeddingInvitation() {
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
     items.forEach((item, index) => { item.style.transitionDelay = `${Math.min(index % 4, 3) * 90}ms`; observer.observe(item); });
     return () => observer.disconnect();
+  }, [opened]);
+
+  useEffect(() => {
+    if (!opened) return;
+    const timer = window.setTimeout(() => setControlsReady(true), 1800);
+    return () => window.clearTimeout(timer);
   }, [opened]);
 
   const calendarUrl = useMemo(() => {
@@ -177,13 +184,13 @@ function WeddingInvitation() {
         <div className="intro-finale absolute inset-0 z-40 overflow-hidden bg-foreground"><WeddingHero intro /></div>
       </>}
     </div>}
-    <div className="fixed inset-x-0 top-0 z-40 h-1 bg-border no-print"><div className="h-full bg-primary transition-[width]" style={{ width: `${progress}%` }} /></div>
+    {controlsReady && <><div className="fixed inset-x-0 top-0 z-40 h-1 bg-border no-print"><div className="h-full bg-primary transition-[width]" style={{ width: `${progress}%` }} /></div>
     {[8, 29, 53, 76, 91].map((left, i) => <i key={left} className="petal" style={{ left: `${left}%`, animationDelay: `${i * 2.4}s` }} />)}
-    <div className="fixed bottom-5 right-4 z-40 flex flex-col gap-2 no-print">
+    <div className="fixed bottom-5 right-4 z-40 flex flex-col gap-2 no-print animate-fade-in">
       <IconButton label={playing ? "Tạm dừng nhạc" : "Phát nhạc"} onClick={toggleMusic}>{playing ? <Pause size={18} /> : <Music2 size={18} />}</IconButton>
       <IconButton label="Chia sẻ thiệp" onClick={share}><Share2 size={18} /></IconButton>
       {progress > 18 && <IconButton label="Lên đầu trang" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><ChevronUp size={19} /></IconButton>}
-    </div>
+    </div></>}
 
     <WeddingHero />
 
