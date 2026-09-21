@@ -156,7 +156,7 @@ function WeddingInvitation() {
     formElement.reset();
   }
 
-  return <main className="paper-texture min-h-screen text-foreground">
+  return <main className={`paper-texture min-h-screen text-foreground ${opening ? "story-opening" : ""}`}>
     <audio ref={audioRef} src={musicUrl} loop preload="metadata" />
     {!opened && <div className={`cinema-intro fixed inset-0 z-50 overflow-hidden text-primary-foreground ${opening ? "is-playing" : ""}`}>
       <img aria-hidden src={img9} className="intro-poster absolute inset-0 h-full w-full object-cover object-[50%_34%]" alt="" />
