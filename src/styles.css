@@ -253,6 +253,7 @@
   &.is-playing .opening-verse-flourish { animation: flourishOpen 1.5s 9.75s ease both; }
   &.is-playing .intro-story, &.is-playing .intro-grain { animation: introCurtainAway 17s cubic-bezier(.2,.72,.2,1) both; }
   &.is-playing .intro-skip { animation: skipAway 17s ease both; }
+  &.is-playing ~ .wedding-hero-frame .hero-copy { animation: heroCopyEnter 2.6s 12.4s cubic-bezier(.16,.78,.2,1) both; }
 }
 @utility intro-poster { filter: saturate(.78) contrast(1.06); }
 @utility intro-shade { background: linear-gradient(to bottom, color-mix(in oklab, var(--ink) 20%, transparent), transparent 34%, color-mix(in oklab, var(--ink) 92%, transparent)); }
@@ -293,10 +294,6 @@
 @utility hero-photo {
   animation: heroReveal 2.4s cubic-bezier(.2,.75,.2,1) both;
   filter: saturate(.9) contrast(1.02);
-}
-
-@utility hero-copy {
-  &.is-entering { animation: heroCopyEnter 2.6s 12.4s cubic-bezier(.16,.78,.2,1) both; }
 }
 
 @utility hero-vignette {
