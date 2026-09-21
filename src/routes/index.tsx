@@ -191,7 +191,7 @@ function WeddingInvitation() {
       {progress > 18 && <IconButton label="Lên đầu trang" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><ChevronUp size={19} /></IconButton>}
     </div></>}
 
-    <WeddingHero showHint={controlsReady} entering={opened} />
+    <WeddingHero showHint={controlsReady} entering={opening} />
 
     <section id="invitation" className="mx-auto grid max-w-5xl items-center gap-8 px-6 py-16 md:grid-cols-[.85fr_1.15fr] md:py-24">
       <div className="reveal"><p className="text-[10px] uppercase tracking-[.3em] text-primary">Chương I · Lời mời</p><h2 className="mt-3 text-[2.6rem] leading-[1.1] md:text-5xl">Ngày chúng mình<br/>gọi nhau là gia đình</h2><p className="mt-5 max-w-sm leading-7 text-muted-foreground">Sẽ thật trọn vẹn nếu ngày ấy có nụ cười của bạn.</p></div>

@@ -178,6 +178,12 @@
   to { opacity: 1; transform: scale(1); }
 }
 
+@keyframes heroCopyEnter {
+  0% { opacity: 0; transform: translateY(22vh); filter: blur(7px); }
+  55% { opacity: .75; }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
 @keyframes coverFade {
   0%, 88% { opacity: 1; }
   100% { opacity: 0; visibility: hidden; }
@@ -294,6 +300,10 @@
 @utility hero-photo {
   animation: heroReveal 2.4s cubic-bezier(.2,.75,.2,1) both;
   filter: saturate(.9) contrast(1.02);
+}
+
+@utility hero-copy {
+  &.is-entering { animation: heroCopyEnter 2.6s 12.4s cubic-bezier(.16,.78,.2,1) both; }
 }
 
 @utility hero-copy {
