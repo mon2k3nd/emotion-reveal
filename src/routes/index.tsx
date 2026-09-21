@@ -129,7 +129,7 @@ function WeddingInvitation() {
     if (opening) return;
     setOpening(true);
     try { await audioRef.current?.play(); setPlaying(true); } catch { setPlaying(false); }
-    window.setTimeout(() => setOpened(true), 17000);
+    window.setTimeout(() => setOpened(true), 17200);
   }
   async function toggleMusic() {
     if (!audioRef.current) return;
@@ -157,7 +157,7 @@ function WeddingInvitation() {
 
   return <main className="paper-texture min-h-screen text-foreground">
     <audio ref={audioRef} src={musicUrl} loop preload="metadata" />
-    {!opened && <div className={`cinema-intro fixed inset-0 z-50 overflow-hidden bg-foreground text-primary-foreground ${opening ? "is-playing" : ""}`}>
+    {!opened && <div className={`cinema-intro fixed inset-0 z-50 overflow-hidden text-primary-foreground ${opening ? "is-playing" : ""}`}>
       <img aria-hidden src={img9} className="intro-poster absolute inset-0 h-full w-full object-cover object-[50%_34%]" alt="" />
       <div aria-hidden className="intro-shade absolute inset-0" />
 
@@ -181,7 +181,6 @@ function WeddingInvitation() {
             <span aria-hidden className="opening-verse-flourish" />
           </div>
         </div>
-        <div className="intro-finale absolute inset-0 z-40 overflow-hidden bg-foreground"><WeddingHero intro /></div>
       </>}
     </div>}
     {controlsReady && <><div className="fixed inset-x-0 top-0 z-40 h-1 bg-border no-print"><div className="h-full bg-primary transition-[width]" style={{ width: `${progress}%` }} /></div>
