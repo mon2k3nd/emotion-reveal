@@ -229,6 +229,7 @@
 @keyframes flourishOpen { 0% { opacity:0; transform:scaleX(0); } 100% { opacity:.75; transform:scaleX(1); } }
 @keyframes finaleReveal { 0%,73% { opacity:0; transform:scale(1.035); } 86%,100% { opacity:1; transform:scale(1); } }
 @keyframes finaleTitle { 0%,82% { opacity:0; transform:translateY(18px); } 94%,100% { opacity:1; transform:none; } }
+@keyframes skipAway { 0%,70% { opacity:1; } 78%,100% { opacity:0; visibility:hidden; } }
 
 
 @utility font-display { font-family: var(--font-display); }
@@ -248,7 +249,8 @@
   &.is-playing .opening-verse-line:nth-child(4) { animation-delay: 7.85s; }
   &.is-playing .opening-verse-flourish { animation: flourishOpen 1.5s 9.75s ease both; }
   &.is-playing .intro-finale { animation: finaleReveal 17s cubic-bezier(.2,.72,.2,1) both; }
-  &.is-playing .intro-finale > div:last-child { animation: finaleTitle 17s ease both; }
+  &.is-playing .intro-finale .wedding-hero-frame > div:last-child { animation: finaleTitle 17s ease both; }
+  &.is-playing .intro-skip { animation: skipAway 17s ease both; }
 }
 @utility intro-poster { filter: saturate(.78) contrast(1.06); }
 @utility intro-shade { background: linear-gradient(to bottom, color-mix(in oklab, var(--ink) 20%, transparent), transparent 34%, color-mix(in oklab, var(--ink) 92%, transparent)); }
@@ -273,7 +275,6 @@
   opacity: 0;
 }
 @utility intro-finale { opacity:0; }
-@utility intro-finale-shade { background:linear-gradient(to bottom,color-mix(in oklab,var(--ink) 18%,transparent) 0%,transparent 34%,color-mix(in oklab,var(--ink) 52%,transparent) 68%,color-mix(in oklab,var(--ink) 88%,transparent) 100%); }
 @utility intro-skip { letter-spacing:0; }
 @utility petal {
   position: fixed;
