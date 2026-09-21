@@ -41,7 +41,7 @@ function IconButton({ label, onClick, children, className = "" }: { label: strin
   return <Button type="button" variant="glass" size="iconLg" aria-label={label} title={label} onClick={onClick} className={className}>{children}</Button>;
 }
 
-function WeddingHero({ intro = false }: { intro?: boolean }) {
+function WeddingHero({ intro = false, showHint = false }: { intro?: boolean; showHint?: boolean }) {
   return <section id={intro ? undefined : "home"} className="wedding-hero-frame relative min-h-[100svh] overflow-hidden bg-foreground">
     <img src={img1} alt={intro ? "" : "Thảo My và Xuân Tú trong ngày cưới"} aria-hidden={intro || undefined} className="hero-photo absolute inset-0 h-full w-full object-cover object-[50%_30%]" />
     <div className="hero-vignette absolute inset-0" />
@@ -51,7 +51,7 @@ function WeddingHero({ intro = false }: { intro?: boolean }) {
         ? <p className="font-display text-[3.6rem] leading-[.9] sm:text-8xl">Thảo My<br/><span className="text-secondary">&</span> Xuân Tú</p>
         : <h1 className="text-[3.6rem] leading-[.9] sm:text-8xl">Thảo My<br/><span className="text-secondary">&</span> Xuân Tú</h1>}
       <p className="mt-6 font-display text-lg italic leading-[2]">Hai con người,<br/>hai hành trình,<br/>một đích đến.</p>
-      <span aria-hidden className="scroll-hint mt-8 block h-12 w-px text-primary-foreground/70"><i /></span>
+      <span aria-hidden className={`scroll-hint mt-8 block h-12 w-px text-primary-foreground/70 transition-opacity duration-700 ${showHint ? "opacity-100" : "opacity-0"}`}><i /></span>
     </div>
   </section>;
 }
@@ -192,7 +192,7 @@ function WeddingInvitation() {
       {progress > 18 && <IconButton label="Lên đầu trang" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><ChevronUp size={19} /></IconButton>}
     </div></>}
 
-    <WeddingHero />
+    <WeddingHero showHint={controlsReady} />
 
     <section id="invitation" className="mx-auto grid max-w-5xl items-center gap-8 px-6 py-16 md:grid-cols-[.85fr_1.15fr] md:py-24">
       <div className="reveal"><p className="text-[10px] uppercase tracking-[.3em] text-primary">Chương I · Lời mời</p><h2 className="mt-3 text-[2.6rem] leading-[1.1] md:text-5xl">Ngày chúng mình<br/>gọi nhau là gia đình</h2><p className="mt-5 max-w-sm leading-7 text-muted-foreground">Sẽ thật trọn vẹn nếu ngày ấy có nụ cười của bạn.</p></div>
